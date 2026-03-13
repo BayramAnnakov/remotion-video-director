@@ -24,13 +24,19 @@ Unlike the official `remotion-dev/skills` (which teaches Claude the Remotion API
 
 They're complementary - install both for the best experience.
 
-## Three-Phase Workflow
+## Four-Phase Workflow
 
-**Phase 1 - Think**: Interactive discovery, creative direction choice, expert panel deliberation, creative brief
+```
+Think ──► Design ──► Build ──► Review
+```
+
+**Phase 1 - Think**: Interactive discovery (one question at a time), creative direction choice, expert panel deliberation, creative brief
 
 **Phase 2 - Design**: Scene-by-scene scenario with timing, data model, visual style
 
-**Phase 3 - Build**: Scaffold project, create components, add music, render, multi-expert review
+**Phase 3 - Build**: Scaffold Remotion project, create scene components, add music, render MP4
+
+**Phase 4 - Review**: Multi-expert scorecard, user feedback loop, iterate until polished
 
 ## Creative Direction Presets
 
@@ -60,8 +66,10 @@ They're complementary - install both for the best experience.
 
 ## What's New in v2.0
 
+- **Four-phase workflow**: Think, Design, Build, Review (Review is now its own phase)
 - **Interactive Phase 1**: Questions asked one at a time with wait-for-answer, not a form dump
 - **4 Creative Direction presets**: Minimal/Jobs, Bloomberg, Warm/Narrative, Terminal/Hacker
+- **Style inspirations**: Each creative direction includes reference creators and aesthetics
 - **Reference input**: Share screenshots or videos you like as style references
 - **Music as first-class step**: Guided music sourcing, integration, and scene-adaptive volume
 - **Voice-over pipeline**: Script generation + ElevenLabs + music ducking
@@ -76,15 +84,45 @@ They're complementary - install both for the best experience.
 You: "I need a 30-second launch video for my SaaS product"
 
 Video Director:
-  1. "What is this video for?" (waits for your answer)
-  2. Offers creative direction: Minimal/Jobs, Bloomberg, Warm, Terminal
-  3. "Any reference videos you like?" (optional)
-  4. Assembles expert panel, generates creative brief
-  5. You confirm or adjust the brief
-  6. Designs 6-scene scenario with timing
-  7. Builds Remotion project, adds music
-  8. Renders MP4, runs multi-expert review with scorecard
-  9. You review, give feedback, iterate until satisfied
+  Phase 1 - Think:
+    1. "What is this video for?" (waits for your answer)
+    2. Offers creative direction: Minimal/Jobs, Bloomberg, Warm, Terminal
+    3. "Any reference videos you like?" (optional)
+    4. Assembles expert panel, generates creative brief
+    5. You confirm or adjust the brief
+
+  Phase 2 - Design:
+    6. Designs 6-scene scenario with timing and data model
+
+  Phase 3 - Build:
+    7. Scaffolds Remotion project, builds scene components
+    8. Adds background music with scene-adaptive volume
+    9. Renders MP4
+
+  Phase 4 - Review:
+    10. Multi-expert review with scorecard
+    11. You review, give feedback, iterate until satisfied
+```
+
+## Troubleshooting
+
+### macOS: "Killed: 9" when rendering
+
+Remotion downloads native binaries (Chrome Headless Shell, ffprobe, ffmpeg) that macOS quarantines. Clear the quarantine:
+
+```bash
+xattr -cr node_modules/.remotion/ 2>/dev/null
+xattr -cr node_modules/.pnpm/@remotion+compositor-darwin-arm64*/node_modules/@remotion/compositor-darwin-arm64/ 2>/dev/null
+```
+
+### "this file does not contain registerRoot"
+
+Your `Root.tsx` must call `registerRoot()`. Exporting a component alone is not enough:
+
+```tsx
+import { registerRoot, Composition } from "remotion";
+const Root = () => <Composition ... />;
+registerRoot(Root);
 ```
 
 ## Requirements

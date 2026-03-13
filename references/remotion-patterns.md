@@ -93,7 +93,32 @@ npx remotion render Video out.mp4
 npx remotion render src/Root.tsx Video out.mp4
 ```
 
-`Root.tsx` must export a `RemotionRoot` component (or use `registerRoot()` in older versions).
+`Root.tsx` **must call `registerRoot()`** - the CLI requires it. Exporting a component alone is NOT enough and will error with "this file does not contain registerRoot".
+
+### 8. macOS quarantine kills Remotion binaries (SIGKILL)
+
+On macOS, downloaded binaries (Chrome Headless Shell, ffprobe, ffmpeg) get a `com.apple.provenance` quarantine attribute that causes the OS to kill them with SIGKILL (signal 9). Symptoms: "Killed: 9" with no other output, or "Browser process exited with signal SIGKILL", or ffprobe "Command was killed with SIGKILL".
+
+**FIX:** Clear quarantine on all Remotion native binaries after install:
+```bash
+xattr -cr node_modules/.remotion/ 2>/dev/null
+xattr -cr node_modules/.pnpm/@remotion+compositor-darwin-arm64*/node_modules/@remotion/compositor-darwin-arm64/ 2>/dev/null
+```
+
+If `xattr -cr` doesn't work, clear individually:
+```bash
+xattr -d com.apple.provenance node_modules/.remotion/chrome-headless-shell/mac-arm64/chrome-headless-shell-mac-arm64/chrome-headless-shell
+xattr -d com.apple.provenance node_modules/.pnpm/@remotion+compositor-darwin-arm64@*/node_modules/@remotion/compositor-darwin-arm64/ffprobe
+xattr -d com.apple.provenance node_modules/.pnpm/@remotion+compositor-darwin-arm64@*/node_modules/@remotion/compositor-darwin-arm64/ffmpeg
+xattr -d com.apple.provenance node_modules/.pnpm/@remotion+compositor-darwin-arm64@*/node_modules/@remotion/compositor-darwin-arm64/remotion
+```
+
+### 9. npx may fail to run Remotion CLI on macOS
+
+If `npx remotion` or `pnpm exec remotion` gets killed immediately, run the bin script directly via `sh`:
+```bash
+sh node_modules/.bin/remotion render src/Root.tsx <CompositionId> out/video.mp4 --codec=h264 --crf=18
+```
 
 ---
 
@@ -361,10 +386,11 @@ const subtitleOpacity = interpolate(frame, [90, 105], [0, 1], clamp);
 ### Standard Root.tsx
 
 ```tsx
-import { Composition } from "remotion";
+import React from "react";
+import { registerRoot, Composition } from "remotion";
 import { Video } from "./Video";
 
-export const RemotionRoot: React.FC = () => {
+const RemotionRoot: React.FC = () => {
   return (
     <Composition
       id="Video"
@@ -376,6 +402,8 @@ export const RemotionRoot: React.FC = () => {
     />
   );
 };
+
+registerRoot(RemotionRoot);
 ```
 
 ### Standard tsconfig.json

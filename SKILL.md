@@ -46,7 +46,7 @@ If the official Remotion skill is installed, leverage it for API-specific detail
 
 ---
 
-## Three-Phase Workflow
+## Four-Phase Workflow
 
 ### Phase 1: Strategic Framing
 
@@ -199,9 +199,9 @@ Present the complete scenario.
 
 ---
 
-### Phase 3: Build + Review
+### Phase 3: Build
 
-**Goal**: Create the Remotion project and iterate to a polished result.
+**Goal**: Create the Remotion project and render the first version.
 
 **CRITICAL**: Never run any command that launches an interactive CLI wizard or prompts for input. This includes `npx create-video`, `npx remotion init`, `npm init`, or bare `npx remotion render` without arguments. Always create files manually and pass all arguments explicitly to CLI commands.
 
@@ -289,6 +289,12 @@ npx remotion render src/Root.tsx <CompositionId> out/<name>.mp4 --codec=h264 --c
 ```
 
 Open the video for the user to review.
+
+---
+
+### Phase 4: Review
+
+**Goal**: Refine the video through expert review and user feedback until it's ready to ship.
 
 #### Step 13 - Multi-Expert Review
 
