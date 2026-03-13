@@ -2,7 +2,9 @@
 
 An interactive Claude Code skill that guides you from "I need a video" to a rendered MP4 with music, through expert deliberation, scenario design, and battle-tested Remotion patterns.
 
-<video src="https://github.com/BayramAnnakov/remotion-video-director/releases/download/v2.1.0/promo.mp4" width="100%" autoplay loop muted playsinline></video>
+![Video Director Promo](promo.gif)
+
+*[Watch with audio (MP4)](https://github.com/BayramAnnakov/remotion-video-director/releases/download/v2.1.0/promo.mp4)*
 
 ## Install
 
