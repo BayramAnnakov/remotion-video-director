@@ -203,7 +203,11 @@ Present the complete scenario.
 
 **Goal**: Create the Remotion project and iterate to a polished result.
 
+**CRITICAL**: Never run any command that launches an interactive CLI wizard or prompts for input. This includes `npx create-video`, `npx remotion init`, `npm init`, or bare `npx remotion render` without arguments. Always create files manually and pass all arguments explicitly to CLI commands.
+
 #### Step 9 - Scaffold Project
+
+**CRITICAL: Never use `npx` in interactive mode.** Do NOT run `npx create-video`, `npx remotion init`, or any `npx` command that launches an interactive wizard or prompts for user input. Instead, manually create all project files (package.json, tsconfig.json, Root.tsx, etc.) and install dependencies with `pnpm install`. This avoids the CLI hanging on interactive prompts.
 
 Create the Remotion project structure:
 ```
@@ -276,8 +280,10 @@ If user skips audio: render with `--muted` flag.
 
 #### Step 12 - Render and Preview
 
+**CRITICAL: Always pass the entry point file to avoid interactive prompts.** Never run bare `npx remotion render` - it may launch an interactive composition picker. Always specify the entry file and composition ID explicitly:
+
 ```bash
-# Render final MP4
+# Render final MP4 - always specify entry point + composition ID
 npx remotion render src/Root.tsx <CompositionId> out/<name>.mp4 --codec=h264 --crf=18
 
 # If no audio:
@@ -308,7 +314,36 @@ Each expert reviews from their angle, including the **Cinematographer** on visua
 2. **Improvements** - specific, actionable changes
 3. **Verdict** - ship as-is, needs one more pass, or needs significant rework
 
-Ask the user which improvements to apply, then iterate.
+Ask the user which improvements to apply.
+
+#### Step 14 - User Review & Iteration
+
+This is the most important step. The AI review above catches technical issues, but only the user knows if the video *feels right*.
+
+> "The video is rendered! Please watch it and let me know:
+> 1. Which scenes work well?
+> 2. Which scenes need changes? (screenshot specific frames if possible)
+> 3. Any text, timing, or visual issues?
+> 4. Anything missing or that should be cut?"
+
+**WAIT** for the user's feedback.
+
+When the user provides feedback:
+1. **Acknowledge** what they liked (reinforces the direction)
+2. **List** the specific changes you'll make based on their notes
+3. **Make the changes** - edit scene components, adjust timing, fix text
+4. **Re-render** and present the updated video
+5. **Ask again**: "Better? Anything else to adjust?"
+
+Repeat this loop until the user is satisfied. Typical videos need 1-3 rounds of refinement.
+
+Common feedback patterns and how to handle them:
+- "Too fast" → Increase scene durations by 30-50%, add more dramatic pauses
+- "Too much text" → Split scenes, reduce to 7 words per frame (Jobs-style)
+- "Doesn't feel premium" → Switch to Minimal/Jobs direction, add negative space
+- "Music doesn't fit" → Try a different Pixabay track, adjust volume curve
+- "Wrong tone" → Revisit creative direction, adjust color palette and animation speed
+- "Scene X is confusing" → Simplify to ONE idea, add visual hierarchy
 
 ---
 

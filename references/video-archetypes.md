@@ -294,6 +294,7 @@ Each preset defines the visual language for a video. Present these options durin
 
 The "Steve Jobs keynote" aesthetic. Maximum impact through restraint.
 
+- **Style Inspirations**: Steve Jobs WWDC keynotes (one idea per slide, black bg, dramatic pauses), Dieter Rams (less but better), Apple product films (slow reveals, typography-forward), Jony Ive narration style
 - **Background**: Pure black (#000000) or near-black (#0A0A0A)
 - **Typography**: Impact or system sans-serif for headlines (80-96pt), Inter for body (20-24pt). Extreme size contrast is key.
 - **Animation**: Slow reveals, dramatic pauses (60+ frame holds between elements), one element appears at a time. Never show more than one idea per frame.
@@ -316,6 +317,7 @@ export const COLORS_JOBS = {
 
 Dense but organized data presentation. Think Bloomberg Terminal meets modern dashboard.
 
+- **Style Inspirations**: Bloomberg Terminal (dense but scannable), Edward Tufte (data-ink ratio, chartjunk elimination), Financial Times data journalism, Stripe annual reports (dark + clean metrics)
 - **Background**: Dark navy (#0D1117) or slate (#0F172A)
 - **Typography**: Inter for labels and body, JetBrains Mono for numbers and metrics. Numbers should be 48-72pt, labels 18-22pt.
 - **Animation**: Fast staggered reveals (6-8 frame delays), counter animations for numbers, bar chart animations. Keep it snappy.
@@ -343,6 +345,7 @@ export const COLORS_BLOOMBERG = {
 
 Human-centered storytelling. Personal, inviting, trustworthy.
 
+- **Style Inspirations**: Brené Brown TED talks (vulnerability, personal storytelling), Wes Anderson color palettes (warm, curated), Airbnb "Belong Anywhere" films (human connection), Headspace animations (calm, inviting)
 - **Background**: Warm dark (#1A1A2E) or cream (#FAF7F2) for light variant
 - **Typography**: Georgia or Playfair Display for quotes and emotional text. Inter for structured content. Serif adds warmth.
 - **Animation**: Gentle springs (damping: 20, stiffness: 100), longer cross-dissolves (12-15 frames). Nothing snappy - everything flows.
@@ -369,6 +372,7 @@ export const COLORS_WARM = {
 
 Code-first aesthetic. Everything looks like it was built in a terminal.
 
+- **Style Inspirations**: Mr. Robot title sequences (glitchy, monospace, dark), GitHub Universe conference openers, Vercel ship announcements (minimal + terminal), Stripe developer docs aesthetic (clean code presentation)
 - **Background**: GitHub dark (#0D1117)
 - **Typography**: JetBrains Mono for everything. Headers 36-48pt, body 20-24pt. Monospace throughout.
 - **Animation**: Typewriter effect for all text reveals. Terminal-style line-by-line output. Cursor blinking.
