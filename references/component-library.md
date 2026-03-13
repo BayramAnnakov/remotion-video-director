@@ -460,6 +460,87 @@ export const FileTree: React.FC<FileTreeProps> = ({ tree, startFrame = 0, expand
 };
 ```
 
+### GradientText
+
+Text with gradient fill for premium/keynote feel.
+
+```tsx
+import React from "react";
+
+interface GradientTextProps {
+  text: string;
+  fontSize?: number;
+  fontFamily?: string;
+  fontWeight?: number;
+  from?: string;
+  to?: string;
+  direction?: string;
+  style?: React.CSSProperties;
+}
+
+export const GradientText: React.FC<GradientTextProps> = ({
+  text, fontSize = 72, fontFamily = "Impact, 'Arial Black', sans-serif",
+  fontWeight = 900, from = "#00D4FF", to = "#A78BFA",
+  direction = "90deg", style,
+}) => {
+  return (
+    <div style={{
+      fontSize, fontFamily, fontWeight, lineHeight: 1.1,
+      background: `linear-gradient(${direction}, ${from}, ${to})`,
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      backgroundClip: "text",
+      ...style,
+    }}>
+      {text}
+    </div>
+  );
+};
+```
+
+### KenBurnsImage
+
+Slow zoom on background images for warmth and cinematic feel.
+
+```tsx
+import React from "react";
+import { useCurrentFrame, useVideoConfig, interpolate, Img, staticFile } from "remotion";
+
+interface KenBurnsImageProps {
+  src: string;           // Filename in public/ folder
+  zoomStart?: number;    // Starting scale (default 1.0)
+  zoomEnd?: number;      // Ending scale (default 1.15)
+  direction?: "in" | "out";
+  style?: React.CSSProperties;
+}
+
+export const KenBurnsImage: React.FC<KenBurnsImageProps> = ({
+  src, zoomStart = 1.0, zoomEnd = 1.15, direction = "in", style,
+}) => {
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const [from, to] = direction === "in" ? [zoomStart, zoomEnd] : [zoomEnd, zoomStart];
+  const scale = interpolate(frame, [0, durationInFrames], [from, to], {
+    extrapolateLeft: "clamp", extrapolateRight: "clamp",
+  });
+
+  return (
+    <div style={{
+      width: "100%", height: "100%", overflow: "hidden",
+      position: "absolute", top: 0, left: 0, ...style,
+    }}>
+      <Img
+        src={staticFile(src)}
+        style={{
+          width: "100%", height: "100%", objectFit: "cover",
+          transform: `scale(${scale})`,
+        }}
+      />
+    </div>
+  );
+};
+```
+
 ---
 
 ## Theme Templates

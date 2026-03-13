@@ -250,12 +250,99 @@ Use `@remotion/captions` for synced subtitles with word-level highlighting.
 
 ---
 
+## Premium Styling Patterns
+
+These patterns separate "animated slideshow" from "looks expensive". Apply based on the chosen Creative Direction.
+
+### Font Variety
+
+Do NOT use Inter for everything. Mix fonts for visual hierarchy:
+
+```typescript
+import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
+import { loadFont as loadJetBrainsMono } from "@remotion/google-fonts/JetBrainsMono";
+import { loadFont as loadPlayfairDisplay } from "@remotion/google-fonts/PlayfairDisplay";
+
+const { fontFamily: inter } = loadInter();        // Body text, labels
+const { fontFamily: mono } = loadJetBrainsMono();  // Code, numbers, data
+const { fontFamily: serif } = loadPlayfairDisplay(); // Quotes, emotional text
+```
+
+For Minimal/Jobs style, use Impact (system font) or a bold sans-serif for headlines:
+```tsx
+fontFamily: "Impact, 'Arial Black', sans-serif"
+```
+
+### Extreme Size Contrast
+
+The #1 trick for premium feel. Headlines should be 3-4x the size of body text:
+
+| Element | Standard | Premium |
+|---------|----------|---------|
+| Headline | 48px | 72-96px |
+| Body text | 24px | 20-24px |
+| Labels/captions | 18px | 14-18px |
+| Hero numbers | 64px | 96-120px |
+
+### Negative Space
+
+Premium = restraint. More padding, fewer elements, more room to breathe.
+
+| Style | Padding | Max elements per frame |
+|-------|---------|----------------------|
+| Standard | 60-80px | 4-6 |
+| Minimal/Jobs | 100-140px | 1-2 |
+| Data-Rich | 40-60px | 5-8 (organized in grid) |
+
+### One Idea Per Frame
+
+If you need more than 15 words on a frame, split into two scenes. For Minimal/Jobs, limit to 7 words.
+
+**Bad**: Scene with title + subtitle + 3 bullet points + chart
+**Good**: Scene 1: title + subtitle. Scene 2: chart with one label.
+
+### Animation on Entrance
+
+Every element must animate in. No element should appear static on a cut. Even a simple 8-frame opacity fade is better than instant appearance.
+
+```tsx
+// Minimum: every element gets at least this
+const opacity = interpolate(frame - delay, [0, 8], [0, 1], clamp);
+```
+
+### Smooth Transitions
+
+Cross-dissolve between EVERY scene. Hard cuts feel cheap (exception: Terminal/Hacker style where hard cuts fit).
+
+```tsx
+// Wrap every scene in CrossDissolve
+<Sequence from={S.hook.start * FPS} durationInFrames={S.hook.dur * FPS}>
+  <CrossDissolve envelopeFrames={10}>
+    <SceneHook />
+  </CrossDissolve>
+</Sequence>
+```
+
+### Dramatic Pauses (Minimal/Jobs only)
+
+After revealing a key statement, hold for 60+ frames (2 seconds) before the next element. Let the idea land.
+
+```tsx
+// Show headline at frame 0, hold until frame 90 before showing next element
+const headlineOpacity = interpolate(frame, [0, 15], [0, 1], clamp);
+const subtitleOpacity = interpolate(frame, [90, 105], [0, 1], clamp);
+```
+
+---
+
 ## Safe Zones and Readability
 
-- **Padding**: 50-80px from all edges
+- **Padding**: 80-120px from all edges (more for Minimal/Jobs)
 - **Text placement**: Keep in upper 85% of frame (bottom gets cropped in presentations/embeds)
+- **Center key questions**: Important questions or headlines should be vertically centered (`alignItems: "center"`, `justifyContent: "center"`), not pushed to edges
 - **Minimum font size**: 24px for anything that needs to be readable on Zoom screen shares
-- **Center vertically**: Use `alignItems: "center"` for comparison layouts
+- **Max text per frame**: 15-20 words for body slides, 7 words for headline slides (Minimal/Jobs)
+- **Data simplification**: On data-heavy slides, show ONE hero metric with 2-3 supporting numbers. Not a full dashboard.
 - **Contrast**: Light text on dark backgrounds needs to be #F0F0F0 or brighter (not gray)
 
 ---

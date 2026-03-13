@@ -124,6 +124,26 @@ Each expert has a specific lens they bring to video creation. When assembling a 
 - Are there any variants that could damage brand perception?
 **Review criteria**: Visual consistency, voice consistency, brand safety
 
+### Cinematographer
+**Lens**: Does the visual composition create emotional impact?
+**Asks**:
+- Is there enough negative space? (Cramped frames feel cheap)
+- Are key elements centered and visually balanced?
+- Is the color palette cohesive and consistent across scenes?
+- Does the typography hierarchy create clear visual weight?
+- Are transitions smooth or jarring?
+**Review criteria**: Composition, color harmony, visual weight balance, premium feel
+
+### Music Director
+**Lens**: Does the audio enhance the emotional arc?
+**Asks**:
+- Does the music style match the creative direction?
+- Is volume balanced - not too loud to distract, not too quiet to notice?
+- Does the music lower during data-heavy or text-heavy scenes?
+- Does the ending feel complete (not abruptly cut)?
+- Is there silence where silence would be more powerful?
+**Review criteria**: Music-mood alignment, volume dynamics, emotional arc support
+
 ---
 
 ## Recommended Panels by Archetype

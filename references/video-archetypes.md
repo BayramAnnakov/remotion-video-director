@@ -283,3 +283,110 @@ Some videos combine elements from multiple archetypes:
 | **Demo + Marketing** | Technical Demo base + Growth Marketing variants | API demo with variants per audience segment |
 
 When a user's need spans archetypes, pick the primary (determines overall arc) and borrow specific scenes from the secondary.
+
+---
+
+## Creative Direction Presets
+
+Each preset defines the visual language for a video. Present these options during Phase 1 and apply the chosen preset's rules throughout build.
+
+### Minimal/Jobs
+
+The "Steve Jobs keynote" aesthetic. Maximum impact through restraint.
+
+- **Background**: Pure black (#000000) or near-black (#0A0A0A)
+- **Typography**: Impact or system sans-serif for headlines (80-96pt), Inter for body (20-24pt). Extreme size contrast is key.
+- **Animation**: Slow reveals, dramatic pauses (60+ frame holds between elements), one element appears at a time. Never show more than one idea per frame.
+- **Layout**: Maximum 7 words per frame. Enormous negative space (padding 120px+). Center everything vertically and horizontally.
+- **Color**: White text on black. One accent color only (cyan, gold, or red) for emphasis moments.
+- **Transitions**: Fade to black between scenes (15-20 frame dissolve). Let the black breathe.
+- **Music**: Sparse piano, ambient pads, or silence punctuated by beat drops. Volume 0.20-0.25 (subtle).
+- **When to use**: Product launches, big announcements, concept presentations, "make it premium"
+
+```typescript
+export const COLORS_JOBS = {
+  bg: "#000000",
+  text: "#FFFFFF",
+  accent: "#00D4FF",  // or "#F5A623" for gold
+  textMuted: "#666666",
+};
+```
+
+### Data-Rich/Bloomberg
+
+Dense but organized data presentation. Think Bloomberg Terminal meets modern dashboard.
+
+- **Background**: Dark navy (#0D1117) or slate (#0F172A)
+- **Typography**: Inter for labels and body, JetBrains Mono for numbers and metrics. Numbers should be 48-72pt, labels 18-22pt.
+- **Animation**: Fast staggered reveals (6-8 frame delays), counter animations for numbers, bar chart animations. Keep it snappy.
+- **Layout**: Can be denser than other styles. Use 2-3 column grids, metric cards, mini-charts. But each scene still has ONE hero metric.
+- **Color**: Cyan (#06B6D4) for primary metrics, green (#4ADE80) for positive, coral (#F87171) for alerts, amber (#F59E0B) for highlights.
+- **Transitions**: Quick cross-dissolve (6-8 frames). No lingering.
+- **Music**: Subtle electronic ambient. Lower to 0.12-0.15 during data-heavy scenes so viewers can focus on reading.
+- **When to use**: Meeting recaps, weekly reports, dashboards, data stories
+
+```typescript
+export const COLORS_BLOOMBERG = {
+  bg: "#0D1117",
+  bgPanel: "#161B22",
+  cyan: "#06B6D4",
+  green: "#4ADE80",
+  amber: "#F59E0B",
+  coral: "#F87171",
+  textPrimary: "#F1F5F9",
+  textSecondary: "#94A3B8",
+  textMuted: "#64748B",
+};
+```
+
+### Warm/Narrative
+
+Human-centered storytelling. Personal, inviting, trustworthy.
+
+- **Background**: Warm dark (#1A1A2E) or cream (#FAF7F2) for light variant
+- **Typography**: Georgia or Playfair Display for quotes and emotional text. Inter for structured content. Serif adds warmth.
+- **Animation**: Gentle springs (damping: 20, stiffness: 100), longer cross-dissolves (12-15 frames). Nothing snappy - everything flows.
+- **Layout**: Generous spacing. Photos and avatars in circular frames. Personal quotes with serif font and left border accent.
+- **Color**: Teal (#4AB0A0), coral (#E86B6B), cream (#FAF7F2). Warm, not cold.
+- **Transitions**: Long cross-dissolve (12-15 frames). Gentle, unhurried.
+- **Music**: Acoustic guitar, warm strings, soft indie. Volume 0.25-0.30.
+- **When to use**: Course intros, team stories, community content, narrative-driven pieces
+
+```typescript
+export const COLORS_WARM = {
+  bg: "#1A1A2E",
+  bgLight: "#16213E",
+  bgPanel: "#0F3460",
+  teal: "#4AB0A0",
+  coral: "#E86B6B",
+  cream: "#FAF7F2",
+  textPrimary: "#F0F0F0",
+  textSecondary: "#A0A0B0",
+};
+```
+
+### Terminal/Hacker
+
+Code-first aesthetic. Everything looks like it was built in a terminal.
+
+- **Background**: GitHub dark (#0D1117)
+- **Typography**: JetBrains Mono for everything. Headers 36-48pt, body 20-24pt. Monospace throughout.
+- **Animation**: Typewriter effect for all text reveals. Terminal-style line-by-line output. Cursor blinking.
+- **Layout**: Terminal window chrome (dots + title bar). Left-aligned text. Command prompts with `$` prefix. Green checkmarks for success.
+- **Color**: Green (#4ADE80) for success/output, cyan (#06B6D4) for highlights, cream (#F8FAFC) for commands, muted (#64748B) for chrome.
+- **Transitions**: Hard cuts work here (fits terminal aesthetic), or very fast dissolve (4-6 frames).
+- **Music**: Lo-fi electronic, synthwave, or chiptune ambient. Volume 0.20-0.25.
+- **When to use**: Technical demos, dev tool showcases, engineering walkthroughs, CLI tools
+
+```typescript
+export const COLORS_TERMINAL = {
+  bg: "#0D1117",
+  bgChrome: "#161B22",
+  green: "#4ADE80",
+  cyan: "#06B6D4",
+  cream: "#F8FAFC",
+  textPrimary: "#E2E8F0",
+  textSecondary: "#94A3B8",
+  textMuted: "#64748B",
+  border: "#30363D",
+};

@@ -1,6 +1,6 @@
 # Remotion Video Director
 
-An interactive Claude Code skill that guides you from "I need a video" to a rendered MP4, through expert deliberation, scenario design, and battle-tested Remotion patterns.
+An interactive Claude Code skill that guides you from "I need a video" to a rendered MP4 with music, through expert deliberation, scenario design, and battle-tested Remotion patterns.
 
 ## Install
 
@@ -19,16 +19,27 @@ Unlike the official `remotion-dev/skills` (which teaches Claude the Remotion API
 | Experts | None | 3-4 experts per video type |
 | Narrative | None | Scene structure + emotional arc |
 | Data design | None | Reusable template architecture |
+| Audio | Basic API docs | Music sourcing, integration, voice-over |
+| Style presets | None | 4 creative directions (Jobs, Bloomberg, Narrative, Hacker) |
 
 They're complementary - install both for the best experience.
 
 ## Three-Phase Workflow
 
-**Phase 1 - Think**: Identify video type, assemble expert panel, generate creative brief
+**Phase 1 - Think**: Interactive discovery, creative direction choice, expert panel deliberation, creative brief
 
 **Phase 2 - Design**: Scene-by-scene scenario with timing, data model, visual style
 
-**Phase 3 - Build**: Scaffold project, create components, render, multi-expert review
+**Phase 3 - Build**: Scaffold project, create components, add music, render, multi-expert review
+
+## Creative Direction Presets
+
+| Style | Feel | Best For |
+|-------|------|----------|
+| **Minimal/Jobs** | Black bg, dramatic pauses, one idea per frame | Product launches, big ideas |
+| **Data-Rich/Bloomberg** | Dark navy, animated charts, dense but organized | Meeting recaps, reports |
+| **Warm/Narrative** | Warm tones, personal quotes, serif accents | Course intros, community |
+| **Terminal/Hacker** | Code theme, typewriter, monospace | Technical demos, dev tools |
 
 ## Five Video Archetypes
 
@@ -40,19 +51,39 @@ They're complementary - install both for the best experience.
 | **Technical Demo** | Product demos, engineering walkthroughs | Developer Advocate, Motion Designer, Tech Writer |
 | **Growth Marketing** | A/B test variants, social campaigns | Growth Hacker, Copywriter, Data Analyst, Brand Guardian |
 
+## Audio Integration
+
+- **Music sourcing**: Guided selection from Pixabay (free, royalty-free)
+- **Scene-adaptive volume**: Music lowers during data-heavy scenes
+- **Voice-over pipeline**: Script generation + ElevenLabs integration
+- **Music style matching**: Each creative direction has recommended music genres
+
+## What's New in v2.0
+
+- **Interactive Phase 1**: Questions asked one at a time with wait-for-answer, not a form dump
+- **4 Creative Direction presets**: Minimal/Jobs, Bloomberg, Warm/Narrative, Terminal/Hacker
+- **Reference input**: Share screenshots or videos you like as style references
+- **Music as first-class step**: Guided music sourcing, integration, and scene-adaptive volume
+- **Voice-over pipeline**: Script generation + ElevenLabs + music ducking
+- **Premium styling patterns**: Font variety, extreme size contrast, negative space, dramatic pauses
+- **2 new expert roles**: Cinematographer (visual composition) + Music Director (audio harmony)
+- **Scene focus rule**: Each scene = ONE idea. Tangential content gets cut.
+- **"Make it premium" shortcut**: Switches to Minimal/Jobs direction automatically
+
 ## Example
 
 ```
 You: "I need a 30-second launch video for my SaaS product"
 
 Video Director:
-  1. Identifies: Product Launch archetype
-  2. Assembles: Brand Strategist, Video Director, UX Designer, Growth Marketer
-  3. Experts deliberate on hook, demo structure, CTA
-  4. Proposes 6-scene scenario with timing
-  5. You confirm or adjust
-  6. Scaffolds Remotion project, builds scenes, renders MP4
-  7. Multi-expert review with scorecard
+  1. "What is this video for?" (waits for your answer)
+  2. Offers creative direction: Minimal/Jobs, Bloomberg, Warm, Terminal
+  3. "Any reference videos you like?" (optional)
+  4. Assembles expert panel, generates creative brief
+  5. You confirm or adjust the brief
+  6. Designs 6-scene scenario with timing
+  7. Builds Remotion project, adds music
+  8. Renders MP4, runs multi-expert review with scorecard
 ```
 
 ## Requirements
