@@ -207,9 +207,7 @@ Present the complete scenario.
 
 #### Step 9 - Scaffold Project
 
-**CRITICAL: Never use `npx` in interactive mode.** Do NOT run `npx create-video`, `npx remotion init`, or any `npx` command that launches an interactive wizard or prompts for user input. Instead, manually create all project files (package.json, tsconfig.json, Root.tsx, etc.) and install dependencies with `pnpm install`. This avoids the CLI hanging on interactive prompts.
-
-Create the Remotion project structure:
+Create the Remotion project structure manually (do NOT use scaffolding wizards - see Phase 3 header):
 ```
 <project>/
 ├── src/
@@ -245,7 +243,7 @@ Build each scene component following the scenario from Phase 2. Use components f
 - All animation via `useCurrentFrame()` + `interpolate()`/`spring()` - NEVER CSS transitions
 - Always clamp interpolation: `{ extrapolateLeft: "clamp", extrapolateRight: "clamp" }`
 - `useCurrentFrame()` is relative to nearest `<Sequence>`, not global timeline
-- Cross-dissolve between every scene (8-12 frame envelope)
+- Cross-dissolve between every scene (8-12 frame envelope; exception: Terminal/Hacker style where hard cuts fit)
 - Every element must animate in - never appear static on a cut
 
 **Premium styling rules** (from `references/remotion-patterns.md`):
@@ -296,18 +294,19 @@ Open the video for the user to review.
 
 After the user has seen the video, run the review protocol from `references/expert-definitions.md`.
 
-Generate a scorecard:
+Generate a scorecard (see `references/expert-definitions.md` for the full template):
 ```
 | Dimension              | Priority | Score |
 |------------------------|----------|-------|
-| Hook clarity           | High     | ?/5   |
+| Hook clarity (first 3-5s) | Critical | ?/5   |
 | Core message landed    | Critical | ?/5   |
 | Pacing / dynamism      | High     | ?/5   |
-| Visual premium feel    | High     | ?/5   |
-| Audio-visual harmony   | Medium   | ?/5   |
-| Target action clear    | Medium   | ?/5   |
-| Audience fit           | High     | ?/5   |
+| Visual readability     | High     | ?/5   |
+| Target action clear    | High     | ?/5   |
+| Audience fit           | Medium   | ?/5   |
 ```
+
+Add 2-3 type-specific dimensions (e.g., "Visual premium feel" for Minimal/Jobs, "Audio-visual harmony" if music was added, "Config reusability" for data reports).
 
 Each expert reviews from their angle, including the **Cinematographer** on visual composition and the **Music Director** on audio (if music was added). Synthesize into:
 1. **Strengths** - what works well
@@ -318,9 +317,9 @@ Ask the user which improvements to apply.
 
 #### Step 14 - User Review & Iteration
 
-This is the most important step. The AI review above catches technical issues, but only the user knows if the video *feels right*.
+The expert review catches technical issues, but only the user knows if the video *feels right*.
 
-> "The video is rendered! Please watch it and let me know:
+> "Now that you've seen the video and the expert review - what's your take?
 > 1. Which scenes work well?
 > 2. Which scenes need changes? (screenshot specific frames if possible)
 > 3. Any text, timing, or visual issues?
@@ -383,3 +382,4 @@ Switch to Minimal/Jobs creative direction: black background, Impact font, extrem
 - [ ] Core message is clear within first 5 seconds
 - [ ] CTA or closing is memorable
 - [ ] Data model is clean and reusable (if data-driven)
+- [ ] User has reviewed and approved the final version

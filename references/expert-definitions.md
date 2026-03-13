@@ -151,10 +151,10 @@ Each expert has a specific lens they bring to video creation. When assembling a 
 | Archetype | Panel |
 |-----------|-------|
 | Product Launch | Brand Strategist, Video Director, UX Designer, Growth Marketer |
-| Recurring Data Report | Data Architect, Content Strategist, Visualization Designer, Automation Engineer |
-| Narrative Intro | Narrative Designer, Instructional Designer, Social Proof Curator, Brand Designer |
+| Recurring Data Report | Data Architect, Content Strategist, Visualization Designer |
+| Narrative Intro | Narrative Designer, Instructional Designer, Social Proof Curator, Cinematographer |
 | Technical Demo | Developer Advocate, UX Designer, Motion Designer, Copywriter |
-| Growth Marketing | Growth Hacker, Copywriter, Data Analyst, Brand Guardian |
+| Growth Marketing | Growth Marketer, Copywriter, Data Analyst, Brand Guardian |
 
 ---
 

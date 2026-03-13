@@ -47,9 +47,9 @@ They're complementary - install both for the best experience.
 |---|---|---|
 | **Product Launch** | SaaS launches, feature announcements | Brand Strategist, Video Director, UX Designer, Growth Marketer |
 | **Recurring Data Report** | Weekly teasers, meeting summaries | Data Architect, Content Strategist, Viz Designer |
-| **Narrative Intro** | Course/workshop intros, event openers | Narrative Designer, Instructional Designer, Social Proof Curator |
-| **Technical Demo** | Product demos, engineering walkthroughs | Developer Advocate, Motion Designer, Tech Writer |
-| **Growth Marketing** | A/B test variants, social campaigns | Growth Hacker, Copywriter, Data Analyst, Brand Guardian |
+| **Narrative Intro** | Course/workshop intros, event openers | Narrative Designer, Instructional Designer, Social Proof Curator, Cinematographer |
+| **Technical Demo** | Product demos, engineering walkthroughs | Developer Advocate, UX Designer, Motion Designer, Copywriter |
+| **Growth Marketing** | A/B test variants, social campaigns | Growth Marketer, Copywriter, Data Analyst, Brand Guardian |
 
 ## Audio Integration
 
@@ -84,6 +84,7 @@ Video Director:
   6. Designs 6-scene scenario with timing
   7. Builds Remotion project, adds music
   8. Renders MP4, runs multi-expert review with scorecard
+  9. You review, give feedback, iterate until satisfied
 ```
 
 ## Requirements

@@ -589,12 +589,14 @@ export const COLORS = {
 ```typescript
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { loadFont as loadJetBrainsMono } from "@remotion/google-fonts/JetBrainsMono";
+import { loadFont as loadPlayfairDisplay } from "@remotion/google-fonts/PlayfairDisplay";
 
 const { fontFamily: interFamily } = loadInter();
 const { fontFamily: monoFamily } = loadJetBrainsMono();
+const { fontFamily: serifFamily } = loadPlayfairDisplay();
 
 export const FONTS = {
-  heading: interFamily,
+  heading: serifFamily,   // Use a different font for headings (swap per creative direction)
   body: interFamily,
   mono: monoFamily,
 };

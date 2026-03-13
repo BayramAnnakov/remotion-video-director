@@ -46,10 +46,9 @@ Not typically data-driven. Each launch video is custom. However, the demo clip s
 **Reference project**: WeeklyIntro (42s, 1260 frames, 30fps)
 
 ### Expert Panel
-- **Data Architect**: Config schema design, what changes vs what stays
+- **Data Architect**: Config schema design, what changes vs what stays, automation readiness
 - **Content Strategist**: Recurring format consistency, audience expectations, pacing
 - **Visualization Designer**: Charts, counters, donut graphs, data hierarchy
-- **Automation Engineer**: CI/CD rendering, template parameterization, batch rendering
 
 ### Scene Template (30-45 seconds)
 | # | Scene | Duration | Purpose | Components |
@@ -108,7 +107,7 @@ This is THE data-driven archetype. Design the config shape carefully:
 - **Narrative Designer**: 3-act structure, emotional arc, tension and resolution
 - **Instructional Designer**: Learning objectives, expectation setting, audience calibration
 - **Social Proof Curator**: Participant quotes, chat simulations, engagement proof
-- **Brand Designer**: Visual identity, color psychology, typography hierarchy
+- **Cinematographer**: Visual composition, color harmony, typography hierarchy
 
 ### Scene Template (60-120 seconds)
 | # | Scene | Duration | Purpose | Components |
@@ -165,9 +164,9 @@ const courseData = {
 
 ### Expert Panel
 - **Developer Advocate**: What to show vs skip, pacing for technical audience, jargon level
-- **UX Researcher**: User journey mapping, feature prioritization for demo flow
+- **UX Designer**: Demo sequences, interaction flow, feature prioritization for demo
 - **Motion Designer**: Terminal simulations, code reveals, browser mockups
-- **Technical Writer**: Annotations, step clarity, progressive disclosure
+- **Copywriter**: Annotations, step clarity, economy of language
 
 ### Scene Template (45-90 seconds)
 | # | Scene | Duration | Purpose | Components |
@@ -215,7 +214,7 @@ const S = {
 **Reference project**: CloneMyBestCustomer (7 variants - main, LinkedIn, Steve, slots, etc.)
 
 ### Expert Panel
-- **Growth Hacker**: Variant strategy, hook testing, distribution channel optimization
+- **Growth Marketer**: Variant strategy, hook testing, distribution channel optimization
 - **Copywriter**: Messaging variants, headline testing, emotional triggers, CTA wording
 - **Data Analyst**: What to measure, success metrics, sample sizing
 - **Brand Guardian**: Consistency across variants, brand voice, visual identity

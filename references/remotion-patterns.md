@@ -93,7 +93,7 @@ npx remotion render Video out.mp4
 npx remotion render src/Root.tsx Video out.mp4
 ```
 
-`Root.tsx` must call `registerRoot()` at module level.
+`Root.tsx` must export a `RemotionRoot` component (or use `registerRoot()` in older versions).
 
 ---
 
@@ -215,38 +215,24 @@ In Sequence wiring:
 
 ## Audio Integration
 
-### Background Music Volume Curve
+See `references/music-and-audio.md` for the full audio guide (sourcing, scene-adaptive volume, voice-over pipeline).
+
+**Quick reference volumes**:
+- Cruising: 0.30 (background ambient)
+- Data-heavy scenes: 0.15 (let viewers read)
+- During narration: 0.10-0.12 (music ducking)
+- Fade in/out: 2 seconds (60 frames at 30fps)
 
 ```tsx
-const totalFrames = 2700; // Match composition
 const musicVolume = interpolate(
   frame,
   [0, 60, totalFrames - 60, totalFrames],
-  [0, 0.35, 0.35, 0],
+  [0, 0.30, 0.30, 0],
   { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
 );
 
 <Audio src={staticFile("music.mp3")} volume={musicVolume} />
 ```
-
-- Fade in: 2 seconds (60 frames at 30fps)
-- Cruising volume: 0.30-0.35 (ambient backdrop, not distracting)
-- Fade out: 2 seconds
-- For narration-heavy videos, reduce cruising to 0.15-0.20
-
-### Voice-over Integration
-
-Pipeline: Script -> ElevenLabs API -> MP3 -> Audio component
-
-```tsx
-<Audio src={staticFile("narration.mp3")} volume={1.0} />
-<Audio src={staticFile("music.mp3")} volume={(f) =>
-  // Lower music during narration
-  interpolate(f, [0, FPS, totalFrames - FPS, totalFrames], [0, 0.15, 0.15, 0], clamp)
-} />
-```
-
-Use `@remotion/captions` for synced subtitles with word-level highlighting.
 
 ---
 
